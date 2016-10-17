@@ -21,8 +21,9 @@ int main(int argc, char *argv[])
     }
     
     int reqKey=atoi(argv[1]);
-
+   
     int sockfdTcp,sockfdUdp,sockfdAcceptTcp;
+
     struct sockaddr_in serv_addrTcp,serv_addrUdp;
     bzero((char *)&serv_addrTcp,sizeof(serv_addrTcp));
     bzero((char *)&serv_addrUdp,sizeof(serv_addrUdp));
