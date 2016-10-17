@@ -12,7 +12,7 @@
 #Uncomment exactly one of the following commands depending on implementation
 
 #For C/C++ implementation
-#./server $1
+./server $1
 
 #For Java implementation
 #java server $1 

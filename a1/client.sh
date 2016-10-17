@@ -13,7 +13,7 @@
 #Uncomment exactly one of the following commands depending on your implementation
 
 #For C/C++ implementation
-#./client $1 $2 $3 "$4"
+./client $1 $2 $3 "$4"
 
 #For Java implementation
 #java client $1 $2 $3 "$4"
