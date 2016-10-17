@@ -58,8 +58,9 @@ int main(int argc, char *argv[])
                 
             }while(r!=0);
             count++;
+            cout<<"SERVER_PORT="<<portNumTcp<<"\n";
         }
-        cout<<"SERVER_PORT="<<portNumTcp<<"\n";
+        
        listen( sockfdTcp,5);
        socklen_t clilenTcp,clilenUdp;
        clilenTcp=sizeof(clientTcp);
