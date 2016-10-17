@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
         r=bind(sockfdTcp,(struct sockaddr *) &serv_addrTcp,sizeof(serv_addrTcp));
         
     }while(r!=0);
-    cout<<"The negotiation port number for the client is "<<portNumTcp<<"\n";
+    cout<<"SERVER_PORT"<<portNumTcp<<"\n";
    listen( sockfdTcp,5);
    socklen_t clilenTcp,clilenUdp;
    clilenTcp=sizeof(clientTcp);
@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
         r=bind(sockfdUdp,(struct sockaddr *)&serv_addrUdp,sizeof(serv_addrUdp));
     }while(r!=0);
     
-    cout<<"The UDP transaction port is "<<portNumUdp<<"\n";
+    //cout<<"The UDP transaction port is "<<portNumUdp<<"\n";
     
     char dataToClient[256];
     bzero(dataToClient,256);
@@ -128,7 +128,7 @@ int main(int argc, char *argv[])
         bzero(dataFromClientUdp,2048);
         bzero(reversedString,2048);
         flag2=recvfrom(sockfdUdp,dataFromClientUdp,2048,0,( struct sockaddr *)&clientUdp,&clilenUdp);
-        cout<<"recieved from UDP : "<<dataFromClientUdp<<"\n";
+        //cout<<"recieved from UDP : "<<dataFromClientUdp<<"\n";
         //Now we need to reverse the string sent from UDP by the  client
         ptr=reversedString;
         /*for(auto i=0;i<strlen(dataFromClientUdp)/2;i++)
@@ -140,7 +140,7 @@ int main(int argc, char *argv[])
             //swap(dataFromClientUdp[i],dataFromClientUdp[strlen(dataFromClientUdp)-i-1]);
             reversedString[j]=dataFromClientUdp[i];
         }  
-        cout<<"the reversed string is  "<<reversedString<<"\n";
+        //cout<<"the reversed string is  "<<reversedString<<"\n";
         flag3=sendto(sockfdUdp,reversedString, strlen(reversedString), 0, (struct sockaddr *)&clientUdp, sizeof(clientUdp));
 
     }
