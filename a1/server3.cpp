@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
     int n=read(sockfdAcceptTcp,dataFromClient,255);
     if (n < 0) error("ERROR reading from socket");
     
-    cout<<"dataFromClient is :"<<dataFromClient<<"\n";
+    //cout<<"dataFromClient is :"<<dataFromClient<<"\n";
     
     if(atoi(dataFromClient)!=reqKey)
     {
