@@ -25,6 +25,11 @@ int main(int argc, char *argv[])
     int portNumTcp=1233;
     int sockfdTcp,sockfdUdp,sockfdAcceptTcp;
     struct sockaddr_in serv_addrTcp,serv_addrUdp;
+    sockfdTcp=socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
+     if(sockfdTcp<0)
+    {
+        error("Unable to open the TCP socket\n");
+    }
     while(1)
     {
         bzero((char *)&serv_addrTcp,sizeof(serv_addrTcp));
@@ -33,12 +38,9 @@ int main(int argc, char *argv[])
         
         
         
-        sockfdTcp=socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
+
         
-        if(sockfdTcp<0)
-        {
-            error("Unable to open the TCP socket\n");
-        }
+      
         
         //First find a fixed port num
         int portNumUdp,r=0;
@@ -61,7 +63,7 @@ int main(int argc, char *argv[])
        listen( sockfdTcp,5);
        socklen_t clilenTcp,clilenUdp;
        clilenTcp=sizeof(clientTcp);
-
+        
        sockfdAcceptTcp=accept(sockfdTcp,( struct sockaddr *)&clientTcp,&clilenTcp);
        
        if (sockfdAcceptTcp < 0) 
