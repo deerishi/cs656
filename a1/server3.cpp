@@ -115,8 +115,7 @@ int main(int argc, char *argv[])
     n=write(sockfdAcceptTcp,ptr,strlen(ptr));
      if (n < 0) error("ERROR writing to socket");
      
-    close(sockfdAcceptTcp);
-    close(sockfdTcp);
+    
     //Now we go into an infinite UDP loop
     //cout<<"\n TCP is now closed, now we start the UDP transaction\n";
     clilenUdp=sizeof(clientUdp);
@@ -125,27 +124,26 @@ int main(int argc, char *argv[])
     clilenUdp=sizeof(clientUdp);
     char reversedString[2048];
     
-    while(1)
+    
+    bzero(dataFromClientUdp,2048);
+    bzero(reversedString,2048);
+    flag2=recvfrom(sockfdUdp,dataFromClientUdp,2048,0,( struct sockaddr *)&clientUdp,&clilenUdp);
+    //cout<<"recieved from UDP : "<<dataFromClientUdp<<"\n";
+    //Now we need to reverse the string sent from UDP by the  client
+    ptr=reversedString;
+    /*for(auto i=0;i<strlen(dataFromClientUdp)/2;i++)
     {
-        bzero(dataFromClientUdp,2048);
-        bzero(reversedString,2048);
-        flag2=recvfrom(sockfdUdp,dataFromClientUdp,2048,0,( struct sockaddr *)&clientUdp,&clilenUdp);
-        //cout<<"recieved from UDP : "<<dataFromClientUdp<<"\n";
-        //Now we need to reverse the string sent from UDP by the  client
-        ptr=reversedString;
-        /*for(auto i=0;i<strlen(dataFromClientUdp)/2;i++)
-        {
-            swap(dataFromClientUdp[i],dataFromClientUdp[strlen(dataFromClientUdp)-i-1]);
-        } */ 
-        for(int i=strlen(dataFromClientUdp)-1,j=0;i>=0;i--,j++)
-        {
-            //swap(dataFromClientUdp[i],dataFromClientUdp[strlen(dataFromClientUdp)-i-1]);
-            reversedString[j]=dataFromClientUdp[i];
-        }  
-        //cout<<"the reversed string is  "<<reversedString<<"\n";
-        flag3=sendto(sockfdUdp,reversedString, strlen(reversedString), 0, (struct sockaddr *)&clientUdp, sizeof(clientUdp));
+        swap(dataFromClientUdp[i],dataFromClientUdp[strlen(dataFromClientUdp)-i-1]);
+    } */ 
+    for(int i=strlen(dataFromClientUdp)-1,j=0;i>=0;i--,j++)
+    {
+        //swap(dataFromClientUdp[i],dataFromClientUdp[strlen(dataFromClientUdp)-i-1]);
+        reversedString[j]=dataFromClientUdp[i];
+    }  
+    //cout<<"the reversed string is  "<<reversedString<<"\n";
+    flag3=sendto(sockfdUdp,reversedString, strlen(reversedString), 0, (struct sockaddr *)&clientUdp, sizeof(clientUdp));
 
-    }
+    
    
     return 0;   
 }
