@@ -120,7 +120,6 @@ NOTE − h_addr is defined as h_addr_list[0] to keep backward compatibility.*/
     
     int sockfdUdp,portNumUdp=atoi(buffer);
     
-    const char *my_message = "this is a test message";
     
     char dataFromServerUDP[2048];
     
