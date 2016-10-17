@@ -102,7 +102,7 @@ NOTE − h_addr is defined as h_addr_list[0] to keep backward compatibility.*/
     bzero(buffer,2048);
     //fgets(buffer,255,stdin);
     
-    bcopy(argv[4],buffer);
+    bcopy(argv[4],buffer,strlen(argv[4]));
     
     n = write(sockfd,buffer,strlen(buffer));//-----------------------------------
     if (n < 0) 
