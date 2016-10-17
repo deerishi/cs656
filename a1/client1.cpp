@@ -70,9 +70,9 @@ This is a synonym for h_addr_list[0]; in other words, it is the first host addre
 NOTE − h_addr is defined as h_addr_list[0] to keep backward compatibility.*/
     struct hostent *server;
 
-    char buffer[256];
-    if (argc < 4) {
-       fprintf(stderr,"usage %s hostname port\n", argv[0]);
+    char buffer[2048];
+    if (argc < 5) {
+       fprintf(stderr,"usage %s hostname port req-code string\n", argv[0]);
        exit(0);
     }
     
