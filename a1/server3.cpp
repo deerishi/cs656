@@ -138,7 +138,7 @@ int main(int argc, char *argv[])
         bzero(dataFromClientUdp,2048);
         bzero(reversedString,2048);
         flag2=recvfrom(sockfdUdp,dataFromClientUdp,2048,0,( struct sockaddr *)&clientUdp,&clilenUdp);
-        //cout<<"recieved from UDP : "<<dataFromClientUdp<<"\n";
+        cout<<"recieved from UDP : "<<dataFromClientUdp<<"\n";
         //Now we need to reverse the string sent from UDP by the  client
         ptr=reversedString;
         /*for(auto i=0;i<strlen(dataFromClientUdp)/2;i++)
