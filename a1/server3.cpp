@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
        exit(0);
     }
     
+    int count=1;
     int reqKey=atoi(argv[1]);
    
     int sockfdTcp,sockfdUdp,sockfdAcceptTcp;
@@ -45,13 +46,17 @@ int main(int argc, char *argv[])
         
         serv_addrTcp.sin_family=AF_INET;
         serv_addrTcp.sin_addr.s_addr=INADDR_ANY;
-        do
+        if(count==1)
         {
-            portNumTcp++;
-            serv_addrTcp.sin_port=htons(portNumTcp);
-            r=bind(sockfdTcp,(struct sockaddr *) &serv_addrTcp,sizeof(serv_addrTcp));
-            
-        }while(r!=0);
+            do
+            {
+                portNumTcp++;
+                serv_addrTcp.sin_port=htons(portNumTcp);
+                r=bind(sockfdTcp,(struct sockaddr *) &serv_addrTcp,sizeof(serv_addrTcp));
+                
+            }while(r!=0);
+            count++;
+        }
         cout<<"SERVER_PORT="<<portNumTcp<<"\n";
        listen( sockfdTcp,5);
        socklen_t clilenTcp,clilenUdp;
