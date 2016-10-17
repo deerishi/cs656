@@ -138,9 +138,9 @@ NOTE − h_addr is defined as h_addr_list[0] to keep backward compatibility.*/
     serv_addrUdp.sin_port=htons(portNumUdp);
     serv_addrUdp.sin_family=AF_INET;
     bcopy((char *)server->h_addr,(char *)&serv_addrUdp.sin_addr.s_addr,server->h_length);
-     
+     cout<<"argv[4] is "
     //Now we just need to send the string to the server by UDP 
-    if (sendto(sockfdUdp,my_message, strlen(my_message), 0, (struct sockaddr *)&serv_addrUdp, sizeof(serv_addrUdp)) < 0)
+    if (sendto(sockfdUdp,argv[4], strlen(argv[4]), 0, (struct sockaddr *)&serv_addrUdp, sizeof(serv_addrUdp)) < 0)
 	error("UDP sendto server failed");
 	
 	bzero(dataFromServerUDP,2048);
