@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
         r=bind(sockfdTcp,(struct sockaddr *) &serv_addrTcp,sizeof(serv_addrTcp));
         
     }while(r!=0);
-    cout<<"SERVER_PORT"<<portNumTcp<<"\n";
+    cout<<"SERVER_PORT="<<portNumTcp<<"\n";
    listen( sockfdTcp,5);
    socklen_t clilenTcp,clilenUdp;
    clilenTcp=sizeof(clientTcp);
@@ -116,7 +116,7 @@ int main(int argc, char *argv[])
     close(sockfdAcceptTcp);
     close(sockfdTcp);
     //Now we go into an infinite UDP loop
-    cout<<"\n TCP is now closed, now we start the UDP transaction\n";
+    //cout<<"\n TCP is now closed, now we start the UDP transaction\n";
     clilenUdp=sizeof(clientUdp);
     int flag2,flag3;
     char dataFromClientUdp[2048];
