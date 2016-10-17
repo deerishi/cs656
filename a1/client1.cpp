@@ -101,15 +101,15 @@ NOTE − h_addr is defined as h_addr_list[0] to keep backward compatibility.*/
     //printf("Please enter the message: ");
     bzero(buffer,2048);
     //fgets(buffer,255,stdin);
-    cout<<"argv[2] is "<<argv[2]<<"\n";
-    bcopy(argv[2],buffer,strlen(argv[2]));
+    cout<<"argv[3] is "<<argv[3]<<"\n";
+    bcopy(argv[3],buffer,strlen(argv[3]));
     
     n = write(sockfd,buffer,strlen(buffer));//-----------------------------------
     if (n < 0) 
          error("ERROR writing to socket");
     
-    bzero(buffer,256);
-    n = read(sockfd,buffer,255);//-----------------------------------
+    bzero(buffer,2048);
+    n = read(sockfd,buffer,2048);//-----------------------------------
     if (n < 0) 
          error("ERROR reading from socket");
     //printf("Server sent port for transaction = %d\n",atoi(buffer));
