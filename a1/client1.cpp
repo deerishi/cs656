@@ -71,7 +71,7 @@ NOTE − h_addr is defined as h_addr_list[0] to keep backward compatibility.*/
     struct hostent *server;
 
     char buffer[256];
-    if (argc < 3) {
+    if (argc < 4) {
        fprintf(stderr,"usage %s hostname port\n", argv[0]);
        exit(0);
     }
@@ -98,7 +98,7 @@ NOTE − h_addr is defined as h_addr_list[0] to keep backward compatibility.*/
     if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) //-----------------------------------
         error("ERROR connecting");
     
-    printf("Please enter the message: ");
+    //printf("Please enter the message: ");
     bzero(buffer,256);
     fgets(buffer,255,stdin);
     
@@ -112,10 +112,10 @@ NOTE − h_addr is defined as h_addr_list[0] to keep backward compatibility.*/
     n = read(sockfd,buffer,255);//-----------------------------------
     if (n < 0) 
          error("ERROR reading from socket");
-    printf("Server sent port for transaction = %d\n",atoi(buffer));
+    //printf("Server sent port for transaction = %d\n",atoi(buffer));
     close(sockfd);
     
-    cout<<"\n now beginnning transaction stage by UDP\n";
+    //cout<<"\n now beginnning transaction stage by UDP\n";
     //Now we have the random port for transaction for the client for UDP transaction
     
     int sockfdUdp,portNumUdp=atoi(buffer);
