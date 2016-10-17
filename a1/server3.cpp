@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     
     int count=1;
     int reqKey=atoi(argv[1]);
-   
+    int portNumTcp=1233;
     int sockfdTcp,sockfdUdp,sockfdAcceptTcp;
     struct sockaddr_in serv_addrTcp,serv_addrUdp;
     while(1)
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
         }
         
         //First find a fixed port num
-        int portNumTcp=1233,portNumUdp,r=0;
+        int portNumUdp,r=0;
         //Setting up server configration
         
         serv_addrTcp.sin_family=AF_INET;
