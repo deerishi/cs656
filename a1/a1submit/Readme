@@ -1,0 +1,19 @@
+1)To compile the client and serevr programs
+    Type make in the directory where they are present.
+
+2) To run the programs. The server is first run with the command ./server.sh <req-code> . The code prints out an available port.
+For example ./server.sh 123
+The server prints SERVER_PORT=1234
+
+
+3) Using an available port mentioned by the server , use that to start the client application. 
+For example ./client.sh ubuntu1404-004.student.cs.uwaterloo.ca 1234 123 "hello world". In this case the client is running on ubuntu1404-002.student.cs.uwaterloo.ca
+If the request code sent by the client is correct, the client prints the following message 
+Received from server via UDP protocol : dlrow olleh
+
+
+Make version:GNU Make 3.81
+
+g++ compiler version : g++ (Ubuntu 4.9.4-2ubuntu1~14.04.1) 4.9.4
+
+
